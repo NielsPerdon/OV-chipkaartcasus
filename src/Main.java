@@ -9,6 +9,9 @@ public class Main {
        ReizigerDAO rdp = new ReizigerDAOPsql(createConnection());
        testReizigerDAO(rdp);
 
+       AdresDAO adp = new AdresDAOPsql(createConnection());
+       testAdresDAO(adp);
+
     }
     private static  Connection createConnection() throws SQLException {
         String jbcUrl = "jdbc:postgresql://localhost:5432/ovchip";
@@ -67,6 +70,37 @@ public class Main {
             rdao.delete(sietske);
             reizigers = rdao.findAll();
             System.out.print("[Test] Na delete " + reizigers.size());
+        }
+
+        public static void testAdresDAO(AdresDAO adao) throws SQLException, ClassNotFoundException {
+        // find all
+            List<Adres> adres = adao.findAll();
+            System.out.println("[Test] ReizigerDAO.findAll() geeft de volgende reizigers:");
+            for (Adres a : adres) {
+                System.out.println(a);
+            }
+
+            // find by reiziger
+            // moet nog gemaakt worden
+
+            // save adress
+            Adres mijnadres = new Adres( 4,"3723pd", "18", "dirkboutslaan 18", "bilthoven", 6);
+            System.out.print("[Test] Eerst " + adres.size() + " adres, na AdresDAO.save() ");
+            adao.save(mijnadres);
+            adres = adao.findAll();
+            System.out.println(adres.size() + " adres\n");
+
+            // update reiziger
+            System.out.print("[Test] Eerst " + mijnadres.getStraat());
+            mijnadres.setStraat("PC Hoofdstraat");
+            adao.update(mijnadres);
+            System.out.print(" na updaten is " + mijnadres.getStraat() + " het nieuwe adres\n");
+
+            // delete reiziger
+            System.out.print("[Test] Eerst " + adres.size());
+            adao.delete(mijnadres);
+            adres = adao.findAll();
+            System.out.print("[Test] Na delete " + adres.size());
         }
 
 }

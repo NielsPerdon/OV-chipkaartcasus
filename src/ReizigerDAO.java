@@ -14,6 +14,4 @@ public interface ReizigerDAO {
     List<Reiziger> findByGbdatum(String datum);
 
     List<Reiziger> findAll() throws SQLException;
-
-
 }

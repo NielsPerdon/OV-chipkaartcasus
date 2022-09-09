@@ -1,24 +1,26 @@
 public class Adres {
-    private int adres_id;
+    private int id;
     private String postcode;
     private String huisnummer;
     private String straat;
     private String woonplaats;
+    private int reiziger_id;
 
-    public Adres(int adres_id, String postcode, String huisnummer, String straat, String woonplaats){
-        this.adres_id = adres_id;
+    public Adres(int id, String postcode, String huisnummer, String straat, String woonplaats, int reiziger_id){
+        this.id = id;
         this.postcode = postcode;
         this. huisnummer = huisnummer;
         this.straat = straat;
         this.woonplaats = woonplaats;
+        this.reiziger_id = reiziger_id;
     }
 
-    public int getAdres_id() {
-        return adres_id;
+    public int getId() {
+        return id;
     }
 
-    public void setAdres_id(int adres_id) {
-        this.adres_id = adres_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getPostcode() {
@@ -53,10 +55,18 @@ public class Adres {
         this.woonplaats = woonplaats;
     }
 
+    public int getReiziger_id() {
+        return reiziger_id;
+    }
+
+    public void setReiziger_id(int reiziger_id) {
+        this.reiziger_id = reiziger_id;
+    }
+
     @Override
     public String toString() {
         return "Adres{" +
-                "adres_id=" + adres_id +
+                "id=" + id +
                 ", postcode='" + postcode + '\'' +
                 ", huisnummer='" + huisnummer + '\'' +
                 ", straat='" + straat + '\'' +
